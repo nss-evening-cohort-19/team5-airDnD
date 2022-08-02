@@ -1,8 +1,8 @@
 {
-  "name": "next-firebase-starter",
+  "name": "team5-airdnd",
   "private": true,
   "version": "1.0.0",
-  "author": "Trinity Christiana",
+  "author": "Krima Patel",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -24,7 +24,8 @@
     "next": "12.0.7",
     "prop-types": "^15.7.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-transition-group": "4.4.2"
   },
   "devDependencies": {
     "eslint": "^7.32.0",
