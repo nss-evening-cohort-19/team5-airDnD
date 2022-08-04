@@ -1,6 +1,6 @@
 import { useAuth } from '../utils/context/authContext';
 
-function Home() {
+export default function Profile() {
   const { user } = useAuth();
 
   return (
@@ -13,10 +13,8 @@ function Home() {
         margin: '0 auto',
       }}
     >
-      <h1>Hello {user.displayName}! </h1>
-      <p>Welcome to AirDnD! Pretend theres a bunch of cards for locations here.</p>
+      <h1>{user.displayName}! </h1>
+      <p>Profile Page</p>
     </div>
   );
 }
-
-export default Home;
