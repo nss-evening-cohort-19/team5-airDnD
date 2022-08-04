@@ -29,7 +29,7 @@ const updateProperties = (propertiesObj) => new Promise((resolve, reject) => {
 });
 
 // Delete User Property
-const deleteProperties= (firebaseKey) => new Promise((resolve, reject) => {
+const deleteProperties = (firebaseKey) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/properties/${firebaseKey}.json`)
     .then((response) => resolve(response.data))
     .catch(reject);
