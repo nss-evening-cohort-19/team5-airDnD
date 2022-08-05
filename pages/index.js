@@ -20,11 +20,34 @@ function Home() {
   console.warn(typeof properties);
 
   return (
-    <div className="d-flex flex-wrap">
-      {properties.map((property) => (
-        <PropertyCard key={property.firebaseKey} propertyObj={property} onUpdate={getPropertyCards} />
-      ))}
-    </div>
+    <>
+      <div className="buttons">
+        <button type="button" className="btn btn-outline-success">
+          Huts
+        </button>
+        <button type="button" className="btn btn-outline-success">
+          Taverns
+        </button>
+        <button type="button" className="btn btn-outline-success">
+          Tombs
+        </button>
+        <button type="button" className="btn btn-outline-success">
+          Castles
+        </button>
+        <button type="button" className="btn btn-outline-success">
+          Experiences
+        </button>
+        <button type="button" className="btn btn-outline-success">
+          All Properties
+        </button>
+      </div>
+
+      <div className="d-flex flex-wrap">
+        {properties.map((property) => (
+          <PropertyCard key={property.firebaseKey} propertyObj={property} onUpdate={getPropertyCards} />
+        ))}
+      </div>
+    </>
   );
 }
 
