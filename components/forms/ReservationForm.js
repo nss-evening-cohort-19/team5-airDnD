@@ -49,14 +49,15 @@ export default function ReservationForm({ obj }) {
       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Reservation</h2>
       <select className="select-rental" aria-label="Choose your rental">
         <option selected>Open this select menu</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option value="1">Caverns</option>
+        <option value="2">Smials</option>
+        <option value="3">Wherever</option>
       </select>
       <div className="mb-3">
         <label htmlFor="user-reserving" className="form-label">Who is going?</label>
         <input id="user-reserving" type="text" className="form-control" onChange={handleChange} required />
       </div>
+      <button type="submit" className="btn btn-success">{obj.firebaseKey ? 'Update' : 'Create'} Reservation</button>
     </form>
   );
 }
