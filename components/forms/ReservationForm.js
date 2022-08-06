@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import React from 'react';
-import { useEffect, useState } from 'react/cjs/react.production.min';
-import { createReservation, getReservations, updateReservation } from '../../api/reservationData';
+import React, { useEffect, useState } from 'react';
+import { createReservation, updateReservation } from '../../api/reservationData';
+import { getAllProperties } from '../../api/userPropertyData';
 import { useAuth } from '../../utils/context/authContext';
 
 const initialState = {
@@ -14,12 +14,12 @@ const initialState = {
 export default function ReservationForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   // eslint-disable-next-line no-unused-vars
-  const [reservations, setReservations] = useState([]);
+  const [properties, setProperties] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
 
   useEffect(() => {
-    getReservations(user.uid).then(setReservations);
+    getAllProperties(user.uid).then(setProperties);
 
     if (obj.firebaseKey) setFormInput(obj);
   }, [obj, user]);
@@ -53,11 +53,29 @@ export default function ReservationForm({ obj }) {
         <option value="2">Smials</option>
         <option value="3">Wherever</option>
       </select>
-      <div className="mb-3">
+      <div className="form-group">
+        <h2>Reservations</h2>
+        <label htmlFor="title">Choose a Rental</label>
+        <input type="text" className="form-control" aria-describedby="Property Type" placeholder="Choose a Rental" name="userPropertyId" value={formInput.userPropertyId} onChange={handleChange} required />
+      </div>
+      <option value="">Choose a Rental</option>
+      {properties.map((property) => (
+        <option
+          key={property.firebaseKey}
+          value={property.firebaseKey}
+          // instead of selected, can also add defaultValue
+          selected={obj.userPropertyId === property.firebaseKey}
+        >
+          {property.propetyTypeName}
+        </option>
+      ))}
+      {/* <div className="mb-3">
         <label htmlFor="user-reserving" className="form-label">Who is going?</label>
         <input id="user-reserving" type="text" className="form-control" onChange={handleChange} required />
-      </div>
-      <button type="submit" className="btn btn-success">{obj.firebaseKey ? 'Update' : 'Create'} Reservation</button>
+      </div> */}
+      <button type="submit" className="btn btn-success">
+        {obj.firebaseKey ? 'Update' : 'Create'} Reservation
+      </button>
     </form>
   );
 }
