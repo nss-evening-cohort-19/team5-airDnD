@@ -3,6 +3,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 
 import { deleteProperty } from '../api/userPropertyData';
 
@@ -14,7 +15,7 @@ function PropertyCard({ propertyObj, onUpdate }) {
     }
   };
 
-  const onViewPropertyClick = () => {};
+  // const onViewPropertyClick = () => {};
 
   const onUpdatePropertyClick = () => {};
 
@@ -26,7 +27,7 @@ function PropertyCard({ propertyObj, onUpdate }) {
           src={propertyObj.imageUrl}
           width="300px"
           height="300px"
-          objectFit="cover"
+          objectfit="cover"
           className="propertyCardImage"
         />
         )}
@@ -36,13 +37,14 @@ function PropertyCard({ propertyObj, onUpdate }) {
       </div>
       <div className="propertyCardDesc">{propertyObj.location}</div>
       <div className="propertyCardButtonContainer">
-        <button
-          className="propertyCardButton view"
-          type="button"
-          onClick={onViewPropertyClick}
-        >
-          View
-        </button>
+        <Link href={`/Properties/${propertyObj.firebaseKey}`} passHref>
+          <button
+            className="propertyCardButton view"
+            type="button"
+          >
+            View
+          </button>
+        </Link>
         <button
           className="propertyCardButton update"
           type="button"
