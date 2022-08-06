@@ -18,5 +18,68 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: white;
+  font-family: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+  color: #484848;
+}
+
+.propertyCardContainer {
+  width: 300px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  background: white;
+  overflow: hidden;
+  font-size: 15px;
+}
+
+.propertyCardImage {
+  border-radius: 8px;
+}
+
+.propertyCardButtonContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0px;
+}
+
+.propertyCardButton {
+  padding: 6px 12px !important;
+  border: none !important;
+  color: rgb(255, 255, 255) !important;
+  border-radius: 6px;
+  width: 30%;
+}
+
+.update {
+  background: linear-gradient(to left, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%) !important;
+}
+
+.view {
+  background: linear-gradient(to right, #0f5132 0%, #198754 50%, #198754 100%) !important;
+}
+
+.delete {
+  background: linear-gradient(to left, rgb(251 1 1) 0%, #f70202d9 50%, rgb(215 4 4) 100%) !important;
+}
+
+.propertyCardTitleContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.propertyCardTitle {
+  font-weight: bold;
+  line-height: 32px;
+}
+
+.propertyCardTitleType {
+  font-size: 14px;
+  line-height: 32px;
+}
+
+.propertyCardDesc {
+  font-size: 14px;
+  line-height: 22px;
 }
