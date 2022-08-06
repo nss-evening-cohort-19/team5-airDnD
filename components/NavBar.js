@@ -26,6 +26,11 @@ export default function NavBar() {
               </Link>
             </li>
             <li className="nav-item">
+              <Link passHref href="/Properties/new">
+                <a className="nav-link">Add Your Space</a>
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link passHref href="/profile">
                 <a className="nav-link">Profile</a>
               </Link>
