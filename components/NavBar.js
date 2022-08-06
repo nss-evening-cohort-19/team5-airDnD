@@ -36,6 +36,11 @@ export default function NavBar() {
               </Link>
             </li>
             <li className="nav-item">
+              <Link passHref href="/Profile/Reservations">
+                <a className="nav-link">Reservations</a>
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link passHref href="/Profile/Reservations/new">
                 <a className="nav-link">Book a Reservation</a>
               </Link>

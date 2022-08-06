@@ -46,19 +46,18 @@ export default function ReservationForm({ obj }) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Reservation</h2>
+      <h2>Reservations</h2>
       <select className="select-rental" aria-label="Choose your rental">
-        <option selected>Open this select menu</option>
+        <option selected>Choose a Rental</option>
         <option value="1">Caverns</option>
         <option value="2">Smials</option>
         <option value="3">Wherever</option>
       </select>
       <div className="form-group">
-        <h2>Reservations</h2>
-        <label htmlFor="title">Choose a Rental</label>
-        <input type="text" className="form-control" aria-describedby="Property Type" placeholder="Choose a Rental" name="userPropertyId" value={formInput.userPropertyId} onChange={handleChange} required />
+        <label htmlFor="title">Who is going?</label>
+        <input type="text" className="form-control" aria-describedby="Property Type" placeholder="Name" name="userPropertyId" value={formInput.userPropertyId} onChange={handleChange} required />
       </div>
-      <option value="">Choose a Rental</option>
+      <option value="">How do you wish to pay?</option>
       {properties.map((property) => (
         <option
           key={property.firebaseKey}
