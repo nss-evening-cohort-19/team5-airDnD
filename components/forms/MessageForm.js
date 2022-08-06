@@ -1,8 +1,8 @@
-// import React, { useState, useEffect } from 'react';
-// import { useRouter } from 'next/router';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 // import { useAuth } from '../utils/context/authContext';
-// import { createMessage } from '../../api/messageData';
+import { createMessage, updateMessage } from '../../api/messageData';
 
 const initialState = {
   msgTitle: '',
@@ -10,50 +10,70 @@ const initialState = {
   firebaseKey: '',
 };
 
-export default function MessageForm() {
+export default function MessageForm({ obj }) {
   // { obj }
-  // const [, setPlayers] = useState({});
-  // const [formInput, setFormInput] = useState(initialState);
+  // const [newMessages, setNewMessages] = useState({});
+  const [formInput, setFormInput] = useState(initialState);
   // const { user } = useAuth();
-  // const router = useRouter();
+  const router = useRouter();
 
-  // useEffect(() => {
-  //   if (obj.firebaseKey)setFormInput(obj);
-  // }, [obj]);
+  useEffect(() => {
+    if (obj.firebaseKey)setFormInput(obj);
+  }, [obj]);
   // [obj, user]
 
-  // const handleChange = (e) => {
-  //   const { name, value } = e.target;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
 
-  //   setFormInput((prevState) => ({
-  //     ...prevState,
-  //     [name]: value,
-  //   }));
-  // };
+    setFormInput((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   if (obj.firebaseKey) {
-  //     updateMessage(formInput).then(() => router.push('/team'));
-  //   } else {
-  //     const payload = { ...formInput };
-  //     // uid: user.uid
-  //     createMessage(payload).then(() => {
-  //       router.push('/team');
-  //     });
-  //   }
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (obj.firebaseKey) {
+      updateMessage(formInput).then(() => router.push('/team'));
+    } else {
+      const payload = { ...formInput };
+      //     // uid: user.uid
+      createMessage(payload).then(() => {
+        router.push('/team');
+      });
+    }
+  };
 
   return (
     <>
+      <h2 className="text-white mt-5" onSubmit={handleSubmit}>{obj.firebaseKey ? 'Update' : 'Create'} Message</h2>
       <div className="form-floating mb-3">
-        <input type="title" className="form-control" id="floatingInput" placeholder="Title" />
+        <input
+          type="title"
+          className="form-control"
+          id="floatingInput"
+          placeholder="Title"
+          name="msgTitle"
+          value={formInput.propertyType}
+          onChange={handleChange}
+          required
+        />
         <label htmlFor="floatingInput">Title</label>
       </div>
       <div className="form-floating">
-        <textarea className="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style={{ height: '100px' }} />
+        <textarea
+          className="form-control"
+          placeholder="Leave a comment here"
+          id="floatingTextarea2"
+          name="message"
+          value={formInput.propertyType}
+          onChange={handleChange}
+          required
+          style={{ height: '100px' }}
+        />
         <label htmlFor="floatingTextarea2">Comments</label>
       </div>
+      <button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Author</button>
     </>
   );
 }
