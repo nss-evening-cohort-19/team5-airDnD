@@ -1,9 +1,9 @@
 import Link from 'next/link';
 // import { useState } from 'react';
 // import { getMessages } from '../api/messageData';
-import MessagesSection from '../components/Messages';
-import ReservationsSection from '../components/Reservations';
-import ProfileSection from '../components/UserProfile';
+// import MessagesSection from '../components/Messages';
+// import ReservationsSection from '../components/Reservations';
+// import ProfileSection from '../components/UserProfile';
 // import { useAuth } from '../utils/context/authContext';
 
 export default function ProfilePage() {
@@ -26,13 +26,13 @@ export default function ProfilePage() {
           </Link>
         </div>
       </nav>
-      <div style={{ width: '50%' }}>
+      {/* <div style={{ width: '50%' }}>
         <ProfileSection />
       </div>
       <div style={{ width: '50%' }}>
         <MessagesSection />
       </div>
-      <div><ReservationsSection /></div>
+      <div><ReservationsSection /></div> */}
     </>
   );
 }
