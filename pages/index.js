@@ -7,6 +7,12 @@ function Home() {
   const { user } = useAuth();
 
   const [properties, setProperties] = useState([]);
+  // const [propertySearchName, setPropertySearchName] = useState('');
+
+  // const filterProperties = (searchName) => {
+  //   console.warn(propertySearchName);
+  //   setPropertySearchName(searchName);
+  // };
 
   const getPropertyCards = () => {
     getAllProperties(user.uid).then(setProperties);
@@ -15,9 +21,41 @@ function Home() {
   useEffect(() => {
     getPropertyCards();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [user]);
 
-  console.warn(typeof properties);
+  // eslint-disable-next-line consistent-return
+  // const renderProperties = () => {
+  //   if (properties.length > 1) {
+  //     return properties.map((property) => {
+  //       if (!propertySearchName) {
+  //         return (
+  //           <PropertyCard
+  //             key={property.firebaseKey}
+  //             propertyObj={property}
+  //             onUpdate={getPropertyCards}
+  //           />
+  //         );
+  //       }
+
+  //       if (propertySearchName
+  //           && (property.name.toLowerCase().indexOf(propertySearchName.toLowerCase())
+  //           !== -1)) {
+  //         return (
+  //           <PropertyCard
+  //             key={property.firebaseKey}
+  //             propertyObj={property}
+  //             onUpdate={getPropertyCards}
+  //           />
+  //         );
+  //       } return null;
+  //     });
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   renderProperties();
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [propertySearchName]);
 
   return (
     <>
