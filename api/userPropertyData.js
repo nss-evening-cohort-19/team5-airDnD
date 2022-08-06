@@ -7,7 +7,13 @@ const dbUrl = clientCredentials.databaseURL;
 
 const getAllProperties = () => new Promise((resolve, reject) => {
   axios.get(`${dbUrl}/properties.json`)
-    .then((response) => resolve(response.data))
+    .then((response) => {
+      if (response?.data) {
+        resolve(Object.values(response.data));
+      } else {
+        resolve([]);
+      }
+    })
     .catch(reject);
 });
 
@@ -29,7 +35,7 @@ const updateProperties = (propertiesObj) => new Promise((resolve, reject) => {
 });
 
 // Delete User Property
-const deleteProperties = (firebaseKey) => new Promise((resolve, reject) => {
+const deleteProperty = (firebaseKey) => new Promise((resolve, reject) => {
   axios.delete(`${dbUrl}/properties/${firebaseKey}.json`)
     .then((response) => resolve(response.data))
     .catch(reject);
@@ -46,6 +52,6 @@ export {
   createProperties,
   getAllProperties,
   getSingleProperties,
-  deleteProperties,
+  deleteProperty,
   updateProperties,
 };

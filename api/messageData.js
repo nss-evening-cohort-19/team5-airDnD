@@ -3,9 +3,10 @@ import { clientCredentials } from '../utils/client';
 
 const dbUrl = clientCredentials.databaseURL;
 
-const getMessages = (uid) => new Promise((resolve, reject) => {
-  axios
-    .get(`${dbUrl}/messages.json?orderBy="uid"&equalTo="${uid}"`)
+// Get all User Properties
+
+const getAllMessages = (uid) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/messages.json.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
       if (response.data) {
         resolve(Object.values(response.data));
@@ -16,38 +17,41 @@ const getMessages = (uid) => new Promise((resolve, reject) => {
     .catch((error) => reject(error));
 });
 
-const deleteMessages = (firebaseKey) => new Promise((resolve, reject) => {
-  axios
-    .delete(`${dbUrl}/messages/${firebaseKey}.json`)
-    .then(() => resolve('deleted'))
-    .catch((error) => reject(error));
-});
-
-const getSingleMessage = (firebaseKey) => new Promise((resolve, reject) => {
-  axios
-    .get(`${dbUrl}/messages/${firebaseKey}.json`)
-    .then((response) => resolve(response.data))
-    .catch((error) => reject(error));
-});
-
-const createMessage = (reservationObj) => new Promise((resolve, reject) => {
-  axios
-    .post(`${dbUrl}/messages.json`, reservationObj)
+// Create a User Property
+const createMessage = (messageObj) => new Promise((resolve, reject) => {
+  axios.post(`${dbUrl}/messages.json`, messageObj)
     .then((response) => {
       const payload = { firebaseKey: response.data.name };
-      axios.patch(`${dbUrl}/messages/${response.data.name}.json`, payload).then(resolve);
-    })
+      axios.patch(`${dbUrl}/messages/${response.data.name}.json`, payload)
+        .then(resolve);
+    }).catch(reject);
+});
+
+// Update User Property
+const updateMessage = (messageObj) => new Promise((resolve, reject) => {
+  axios.patch(`${dbUrl}/messages/${messageObj.firebaseKey}.json`, messageObj)
+    .then((response) => resolve(response.data))
     .catch(reject);
 });
 
-const updateMessage = (reservationObj) => new Promise((resolve, reject) => {
-  axios.patch(`${dbUrl}/messages/${reservationObj.firebaseKey}.json`, reservationObj).then(resolve).catch(reject);
+// Delete User Property
+const deleteMessage = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.delete(`${dbUrl}/messages/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch(reject);
+});
+
+// Get Single property
+const getSingleMessage = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/messages/${firebaseKey}.json`)
+    .then((response) => resolve(response.data))
+    .catch(reject);
 });
 
 export {
-  getMessages,
-  getSingleMessage,
-  deleteMessages,
   createMessage,
+  getAllMessages,
+  getSingleMessage,
+  deleteMessage,
   updateMessage,
 };

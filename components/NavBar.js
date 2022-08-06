@@ -26,8 +26,18 @@ export default function NavBar() {
               </Link>
             </li>
             <li className="nav-item">
+              <Link passHref href="/Properties/new">
+                <a className="nav-link">Add Your Space</a>
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link passHref href="/profile">
                 <a className="nav-link">Profile</a>
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link passHref href="Profile/Messages/newMsg">
+                <a className="nav-link">New Message</a>
               </Link>
             </li>
             <button type="button" className="btn btn-danger" onClick={signOut}>
