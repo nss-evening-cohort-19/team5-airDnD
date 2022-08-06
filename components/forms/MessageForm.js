@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 // import { useAuth } from '../utils/context/authContext';
+import { useAuth } from '../../utils/context/authContext';
 import { createMessage, updateMessage } from '../../api/messageData';
 
 const initialState = {
@@ -14,12 +15,12 @@ export default function MessageForm({ obj }) {
   // { obj }
   // const [newMessages, setNewMessages] = useState({});
   const [formInput, setFormInput] = useState(initialState);
-  // const { user } = useAuth();
+  const { user } = useAuth();
   const router = useRouter();
 
   useEffect(() => {
     if (obj.firebaseKey)setFormInput(obj);
-  }, [obj]);
+  }, [obj, user]);
   // [obj, user]
 
   const handleChange = (e) => {
@@ -54,7 +55,7 @@ export default function MessageForm({ obj }) {
           id="floatingInput"
           placeholder="Title"
           name="msgTitle"
-          value={formInput.propertyType}
+          value={formInput.msgTitle}
           onChange={handleChange}
           required
         />
@@ -66,7 +67,7 @@ export default function MessageForm({ obj }) {
           placeholder="Leave a comment here"
           id="floatingTextarea2"
           name="message"
-          value={formInput.propertyType}
+          value={formInput.message}
           onChange={handleChange}
           required
           style={{ height: '100px' }}
