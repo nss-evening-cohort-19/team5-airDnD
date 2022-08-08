@@ -39,7 +39,7 @@ export default function NavBar() {
               <Link passHref href="/Profile/Reservations/new">
                 <a className="nav-link">Book a Reservation</a>
               </Link>
-              <Link passHref href="Profile/Messages/newMsg">
+              <Link passHref href="/Profile/Messages/newMsg">
                 <a className="nav-link">New Message</a>
               </Link>
             </li>
