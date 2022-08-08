@@ -49,9 +49,10 @@ export default function ReservationForm({ obj }) {
       <h2>Reservations</h2>
       <select className="select-rental" aria-label="Choose your rental">
         <option selected>Choose a Rental</option>
-        <option value="1">Castles</option>
+        <option value="1">Castle</option>
         <option value="2">Taverns</option>
         <option value="3">Tomb</option>
+        <option value="4">Hut</option>
       </select>
       <div className="form-group">
         <label htmlFor="title">Who is going?</label>
