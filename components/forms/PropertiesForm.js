@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
@@ -24,7 +26,6 @@ function PropertyForm({ obj }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setFormInput((prevState) => ({
       ...prevState,
       [name]: value,
@@ -46,9 +47,8 @@ function PropertyForm({ obj }) {
   return (
     <form onSubmit={handleSubmit} style={{ color: 'black' }}>
       <h2 className="text-black mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Your Property</h2>
-
       <div className="form-group">
-        <label htmlFor="title">Property Type</label>
+        <label>Property Type</label>
         <input
           type="text"
           className="form-control"
@@ -61,7 +61,9 @@ function PropertyForm({ obj }) {
         />
       </div>
       <div className="form-group">
-        <label htmlFor="title">Property Type Name</label>
+        <label>
+          Property Type Name
+        </label>
         <input
           type="text"
           className="form-control"
@@ -75,7 +77,9 @@ function PropertyForm({ obj }) {
       </div>
 
       <div className="form-group">
-        <label htmlFor="title">Location</label>
+        <label>
+          Location
+        </label>
         <input
           type="text"
           className="form-control"
@@ -97,6 +101,20 @@ function PropertyForm({ obj }) {
           placeholder="Enter Image url"
           name="imageUrl"
           value={formInput.imageUrl}
+          onChange={handleChange}
+          required
+        />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="description">Description</label>
+        <input
+          type="text"
+          className="form-control"
+          aria-describedby="Description"
+          placeholder="Description"
+          name="description"
+          value={formInput.description}
           onChange={handleChange}
           required
         />

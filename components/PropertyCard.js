@@ -15,8 +15,6 @@ function PropertyCard({ propertyObj, onUpdate }) {
     }
   };
 
-  // const onUpdatePropertyClick = () => {};
-
   return (
     <div className="propertyCardContainer">
       {propertyObj.imageUrl && <img src={propertyObj.imageUrl} width="300px" height="300px" objectfit="cover" className="propertyCardImage" />}
@@ -55,6 +53,7 @@ PropertyCard.propTypes = {
     location: PropTypes.string,
     firebaseKey: PropTypes.string,
     favorite: PropTypes.bool,
+    description: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };

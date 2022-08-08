@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-function SearchComponent({ onSearch }) {
+function SearchComponent({ onSearch, className }) {
   const [searchTerm, setSearchTerm] = useState('');
 
-  const handleChange = (e) => setSearchTerm(e.target.value);
+  const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+    onSearch(e.target.value);
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -13,7 +16,7 @@ function SearchComponent({ onSearch }) {
 
   return (
     <form
-      className="d-flex"
+      className={`d-flex ${className}`}
       role="search"
       onSubmit={handleSubmit}
     >
@@ -32,6 +35,11 @@ function SearchComponent({ onSearch }) {
 
 SearchComponent.propTypes = {
   onSearch: PropTypes.func.isRequired,
+  className: PropTypes.string,
+};
+
+SearchComponent.defaultProps = {
+  className: '',
 };
 
 export default SearchComponent;

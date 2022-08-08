@@ -27,9 +27,12 @@ export default function ViewProperty() {
       </div>
       <div className="text-black ms-5 details">
         <h4>{propertyDetails.propertyTypeName}</h4>
-        <p>{propertyDetails.propertyType}</p>
+        <p><strong>{propertyDetails.propertyType}</strong></p>
         <p>{propertyDetails.location}</p>
+        <p><i>{propertyDetails.description}</i></p>
+        <button type="button" className="btn btn-primary">Reserve Property</button>
       </div>
+
     </div>
   );
 }
