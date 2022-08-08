@@ -48,10 +48,17 @@ const getSingleProperties = (firebaseKey) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const getPropertiesReservations = (firebaseKey) => new Promise((resolve, reject) => {
+  axios.get(`${dbUrl}/reservations.json?orderBy="userPropertyId"&equalTo="${firebaseKey}"`)
+    .then((response) => resolve(Object.values(response.data)))
+    .catch((error) => reject(error));
+});
+
 export {
   createProperties,
   getAllProperties,
   getSingleProperties,
   deleteProperty,
   updateProperties,
+  getPropertiesReservations,
 };

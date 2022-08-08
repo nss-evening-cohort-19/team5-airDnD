@@ -1,5 +1,6 @@
 import React from 'react';
+import ReservationForm from '../../../components/forms/ReservationForm';
 
-export default function firebaseKey() {
-  return <div>edit</div>;
+export default function AddReservation() {
+  return <ReservationForm />;
 }
