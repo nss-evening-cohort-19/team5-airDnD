@@ -40,6 +40,11 @@ export default function NavBar() {
                 <a className="nav-link">New Message</a>
               </Link>
             </li>
+            <li className="nav-item">
+              <Link passHref href="/NewUser">
+                <a className="nav-link">New User?</a>
+              </Link>
+            </li>
             <button type="button" className="btn btn-danger" onClick={signOut}>
               Sign Out
             </button>

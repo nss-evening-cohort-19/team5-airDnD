@@ -1,6 +1,7 @@
 // import React, { useEffect, useState } from 'react';
 // import { useRouter } from 'next/router';
 // import { getAllMessages } from '../../../api/messageData';
+// import MessageCard from '../../../components/MessageCard';
 
 // // Create Dynamic page where users can view the messages
 // export default function ViewMessages() {

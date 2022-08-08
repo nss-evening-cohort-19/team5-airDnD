@@ -35,46 +35,48 @@ export default function MessageForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateMessage(formInput).then(() => router.push('/team'));
+      updateMessage(formInput).then(() => router.push('/profile'));
     } else {
       const payload = { ...formInput };
       //     // uid: user.uid
       createMessage(payload).then(() => {
-        router.push('/team');
+        router.push('/profile');
       });
     }
   };
 
   return (
     <>
-      <h2 className="text-white mt-5" onSubmit={handleSubmit}>{obj.firebaseKey ? 'Update' : 'Create'} Message</h2>
-      <div className="form-floating mb-3">
-        <input
-          type="title"
-          className="form-control"
-          id="floatingInput"
-          placeholder="Title"
-          name="msgTitle"
-          value={formInput.msgTitle}
-          onChange={handleChange}
-          required
-        />
-        <label htmlFor="floatingInput">Title</label>
-      </div>
-      <div className="form-floating">
-        <textarea
-          className="form-control"
-          placeholder="Leave a comment here"
-          id="floatingTextarea2"
-          name="message"
-          value={formInput.message}
-          onChange={handleChange}
-          required
-          style={{ height: '100px' }}
-        />
-        <label htmlFor="floatingTextarea2">Comments</label>
-      </div>
-      <button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Author</button>
+      <form onSubmit={handleSubmit} style={{ color: 'black' }}>
+        <h2 className="text-black mt-5" style={{ color: 'black' }}>{obj.firebaseKey ? 'Update' : 'Create'} Your Message</h2>
+        <div className="form-floating mb-3">
+          <input
+            type="title"
+            className="form-control"
+            id="floatingInput"
+            placeholder="Title"
+            name="msgTitle"
+            value={formInput.msgTitle}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="floatingInput">Title</label>
+        </div>
+        <div className="form-floating">
+          <textarea
+            className="form-control"
+            placeholder="Leave a comment here"
+            id="floatingTextarea2"
+            name="message"
+            value={formInput.message}
+            onChange={handleChange}
+            required
+            style={{ height: '100px' }}
+          />
+          <label htmlFor="floatingTextarea2">Comments</label>
+        </div>
+        <button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Message</button>
+      </form>
     </>
   );
 }
