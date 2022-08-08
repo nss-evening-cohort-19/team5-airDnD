@@ -49,13 +49,13 @@ export default function ReservationForm({ obj }) {
       <h2>Reservations</h2>
       <select className="select-rental" aria-label="Choose your rental">
         <option selected>Choose a Rental</option>
-        <option value="1">Caverns</option>
-        <option value="2">Smials</option>
-        <option value="3">Wherever</option>
+        <option value="1">Castles</option>
+        <option value="2">Taverns</option>
+        <option value="3">Tomb</option>
       </select>
       <div className="form-group">
         <label htmlFor="title">Who is going?</label>
-        <input type="text" className="form-control" aria-describedby="Property Type" placeholder="Name" name="userPropertyId" value={formInput.userPropertyId} onChange={handleChange} required />
+        <input type="text" className="form-control" aria-describedby="Names" placeholder="Name" name="userPropertyId" value={formInput.userPropertyId} onChange={handleChange} required />
       </div>
       <option value="">How do you wish to pay?</option>
       {properties.map((property) => (
