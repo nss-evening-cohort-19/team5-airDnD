@@ -16,7 +16,7 @@ export default function ViewProperty() {
   return (
     <div className="mt-5 d-flex flex-wrap">
       <div className="d-flex flex-column">
-
+        <h4>{propertyDetails.propertyTypeName}</h4>
         <img
           src={propertyDetails.imageUrl}
           alt={propertyDetails.name}
@@ -26,7 +26,7 @@ export default function ViewProperty() {
         />
       </div>
       <div className="text-black ms-5 details">
-        <h4>{propertyDetails.propertyTypeName}</h4>
+
         <p><strong>{propertyDetails.propertyType}</strong></p>
         <p>{propertyDetails.location}</p>
         <p><i>{propertyDetails.description}</i></p>
