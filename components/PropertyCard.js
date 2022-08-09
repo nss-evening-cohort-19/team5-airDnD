@@ -15,48 +15,29 @@ function PropertyCard({ propertyObj, onUpdate }) {
     }
   };
 
-  // const onViewPropertyClick = () => {};
-
-  const onUpdatePropertyClick = () => {};
-
   return (
     <div className="propertyCardContainer">
-      {propertyObj.imageUrl
-        && (
-        <img
-          src={propertyObj.imageUrl}
-          width="300px"
-          height="300px"
-          objectfit="cover"
-          className="propertyCardImage"
-        />
-        )}
+      {propertyObj.imageUrl && <img src={propertyObj.imageUrl} width="300px" height="300px" objectfit="cover" className="propertyCardImage" />}
       <div className="propertyCardTitleContainer">
         <div className="propertyCardTitle">{propertyObj.propertyTypeName}</div>
         <div className="propertyCardTitleType">{propertyObj.propertyType}</div>
       </div>
       <div className="propertyCardDesc">{propertyObj.location}</div>
+
       <div className="propertyCardButtonContainer">
         <Link href={`/Properties/${propertyObj.firebaseKey}`} passHref>
-          <button
-            className="propertyCardButton view"
-            type="button"
-          >
+          <button className="propertyCardButton view" type="button">
             View
           </button>
         </Link>
-        <button
-          className="propertyCardButton update"
-          type="button"
-          onClick={onUpdatePropertyClick}
-        >
-          Update
-        </button>
-        <button
-          className="propertyCardButton delete"
-          type="button"
-          onClick={onDeletePropertyClick}
-        >
+
+        <Link href={`/Properties/edit/${propertyObj.firebaseKey}`} passHref>
+          <button className="propertyCardButton update" type="button">
+            Update
+          </button>
+        </Link>
+
+        <button className="propertyCardButton delete" type="button" onClick={onDeletePropertyClick}>
           Delete
         </button>
       </div>
@@ -72,6 +53,7 @@ PropertyCard.propTypes = {
     location: PropTypes.string,
     firebaseKey: PropTypes.string,
     favorite: PropTypes.bool,
+    description: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
