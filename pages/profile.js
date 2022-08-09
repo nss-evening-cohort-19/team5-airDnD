@@ -4,7 +4,7 @@ import { getAllMessages } from '../api/messageData';
 import MessagesSection from '../components/Messages';
 // import ReservationsSection from '../components/Reservations';
 import { useAuth } from '../utils/context/authContext';
-import GetUserProfile from './Profile/[firebaseKey]';
+// import GetUserProfile from './Profile/[firebaseKey]';
 
 export default function ProfilePage() {
   const [messages, setMessages] = useState([]);
@@ -12,7 +12,7 @@ export default function ProfilePage() {
   const getProfileMessages = () => {
     getAllMessages(user.uid).then(setMessages);
   };
-  useEffect(() => { getProfileMessages(); });
+  useEffect(() => { getProfileMessages(); }, []);
 
   return (
     <>
@@ -26,12 +26,12 @@ export default function ProfilePage() {
           </Link>
         </div>
       </nav>
-      <div style={{ width: '50%' }}>
+      {/* <div style={{ width: '50%' }}>
         <GetUserProfile />
-      </div>
+      </div> */}
       <div style={{ width: '50%' }}>
         {messages.map((message) => (
-          <MessagesSection key={message.firebaseKey} messageObj={message} />))}
+          <MessagesSection key={message.firebaseKey} messageObj={message} onUpdate={getProfileMessages} />))}
       </div>
       {/* <div><ReservationsSection /></div> */}
     </>
