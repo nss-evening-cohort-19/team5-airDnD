@@ -1,7 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { deleteMessage } from '../api/messageData';
 
-export default function MessagesSection({ messageObj }) {
+export default function MessagesSection({ messageObj, onUpdate }) {
+  const deleteThisMessage = () => {
+    if (window.confirm(`Delete ${messageObj.msgTitle}?`)) {
+      deleteMessage(messageObj.firebaseKey).then(() => onUpdate());
+    }
+  };
+
   return (
     <>
       <div className="card">
@@ -14,6 +21,10 @@ export default function MessagesSection({ messageObj }) {
           <div className="collapse" id="collapseExample">
             <div className="card card-body">
               {messageObj.message}
+            </div>
+            <div>
+              <button type="button" href="" className="view-btn">VIEW</button>
+              <button type="button" href="" className="delete-btn" onClick={deleteThisMessage}>DELETE</button>
             </div>
           </div>
         </div>
@@ -30,4 +41,5 @@ MessagesSection.propTypes = {
     msgTitle: PropTypes.string,
     to: PropTypes.string,
   }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
 };

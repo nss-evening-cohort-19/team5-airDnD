@@ -8,6 +8,7 @@ const initialState = {
   name: '',
   email: '',
   phoneNum: '',
+  image: '',
 };
 
 export default function NewUserForm({ obj }) {

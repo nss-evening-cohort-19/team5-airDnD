@@ -1,19 +1,19 @@
 import Link from 'next/link';
-// import { useState } from 'react';
-// import { getMessages } from '../api/messageData';
-// import MessagesSection from '../components/Messages';
+import { useEffect, useState } from 'react';
+import { getAllMessages } from '../api/messageData';
+import MessagesSection from '../components/Messages';
 // import ReservationsSection from '../components/Reservations';
-// import ProfileSection from '../components/UserProfile';
-// import { useAuth } from '../utils/context/authContext';
+import { useAuth } from '../utils/context/authContext';
+import GetUserProfile from './Profile/[firebaseKey]';
 
 export default function ProfilePage() {
-  // const [messages, setMessages] = useState([]);
-  // const [userProfile, setUserProgfile] = useState([]);
-  // const [reservations, setReservations] = useState([]);
-  // const { user } = useAuth();
-  // const getProfileMessages = () => {
-  //   getMessages(user.uid).then(setMessages);
-  // };
+  const [messages, setMessages] = useState([]);
+  const { user } = useAuth();
+  const getProfileMessages = () => {
+    getAllMessages(user.uid).then(setMessages);
+  };
+  useEffect(() => { getProfileMessages(); });
+
   return (
     <>
       <nav className="navbar bg-light">
@@ -26,13 +26,14 @@ export default function ProfilePage() {
           </Link>
         </div>
       </nav>
-      {/* <div style={{ width: '50%' }}>
-        <ProfileSection />
+      <div style={{ width: '50%' }}>
+        <GetUserProfile />
       </div>
       <div style={{ width: '50%' }}>
-        <MessagesSection />
+        {messages.map((message) => (
+          <MessagesSection key={message.firebaseKey} messageObj={message} />))}
       </div>
-      <div><ReservationsSection /></div> */}
+      {/* <div><ReservationsSection /></div> */}
     </>
   );
 }

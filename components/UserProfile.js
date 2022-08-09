@@ -2,10 +2,11 @@ import Image from 'next/image';
 import PropTypes from 'prop-types';
 
 export default function ProfileSection({ userObj }) {
+  console.warn(userObj);
   return (
     <>
       <div className="card" style={{ width: '18rem' }}>
-        <Image src="..." className="card-img-top" alt="..." />
+        <Image src="/dragon.png" className="card-img-top" alt="" width="200px" height="200px" />
         <div className="card-body">
           <h1 className="card-title">{userObj.name}</h1>
           <h5 className="card-text">{userObj.email}</h5>
