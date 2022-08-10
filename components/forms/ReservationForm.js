@@ -9,8 +9,8 @@ import { useAuth } from '../../utils/context/authContext';
 const initialState = {
   name: '',
   propertyTypeName: '',
-  userPropertyId: '',
-  date: '',
+  checkInDate: '',
+  checkOutDate: '',
   paymentType: '',
 };
 
@@ -85,7 +85,6 @@ ReservationForm.propTypes = {
   obj: PropTypes.shape({
     name: PropTypes.string,
     propertyTypeName: PropTypes.string,
-    userPropertyId: PropTypes.string,
     checkInDate: PropTypes.string,
     checkOutDate: PropTypes.string,
     paymentType: PropTypes.string,
