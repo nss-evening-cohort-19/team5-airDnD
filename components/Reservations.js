@@ -22,12 +22,12 @@ export default function ReservationsSection({ reservationObj, onUpdate }) {
     // </>
     <div className="card">
       <div className="card-header">{reservationObj.name}</div>
-      <div className="card-header">{reservationObj.propertyTypeName}</div>
+      <div className="card-title">{reservationObj.propertyTypeName}</div>
       <div className="card-body">
         <h5 className="card-title">Here is your reservation:</h5>
-        <p className="card-text">{reservationObj.checkInDate}</p>
-        <p className="card-text">{reservationObj.checkOutDate}</p>
-        <p className="card-text">{reservationObj.paymentType}</p>
+        <p className="card-text">Check-In Date: {reservationObj.checkInDate}</p>
+        <p className="card-text">Check-Out Date: {reservationObj.checkOutDate}</p>
+        <p className="card-text">Payment: {reservationObj.paymentType}</p>
         <button type="button" onClick={deleteThisReservation}>DELETE</button>
         <Link href={`/Profile/Reservations/${reservationObj.firebaseKey}`} passHref>
           <button type="button">VIEW</button>
