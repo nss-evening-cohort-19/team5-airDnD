@@ -4,7 +4,6 @@ import { getAllMessages } from '../api/messageData';
 import MessagesSection from '../components/Messages';
 // import ReservationsSection from '../components/Reservations';
 import { useAuth } from '../utils/context/authContext';
-import GetUserProfile from './Profile/[firebaseKey]';
 
 export default function ProfilePage() {
   const [messages, setMessages] = useState([]);
@@ -28,7 +27,7 @@ export default function ProfilePage() {
         </div>
       </nav>
       <div>
-        <GetUserProfile displayName={user.displayName} photoURL={user.photoURL} email={user.email} lastLogin={user.lastLogin} phoneNum={user.phoneNum} />
+        <ProfilePage displayName={user.displayName} photoURL={user.photoURL} email={user.email} lastLogin={user.lastLogin} phoneNum={user.phoneNum} />
       </div>
       <div style={{ width: '50%' }}>
         {messages.map((message) => (
