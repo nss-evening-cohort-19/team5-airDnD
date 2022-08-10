@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import { getSingleProperties } from '../../api/userPropertyData';
 
 export default function ViewProperty() {
@@ -30,7 +31,10 @@ export default function ViewProperty() {
         <p><strong>{propertyDetails.propertyType}</strong></p>
         <p>{propertyDetails.location}</p>
         <p><i>{propertyDetails.description}</i></p>
-        <button type="button" className="btn btn-primary">Reserve Property</button>
+        <Link href="/Profile/Reservations/new" passHref>
+          <button type="button" className="btn btn-primary">Reserve Property</button>
+        </Link>
+
       </div>
 
     </div>

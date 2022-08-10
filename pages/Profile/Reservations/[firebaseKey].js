@@ -17,7 +17,7 @@ export default function ViewReservation() {
 
   return (
     <div className="mt-5 d-flex flex-wrap">
-      <div className="text-white ms-5 details">
+      <div className="text-black ms-5 details">
         <h5>
           {reservationDetails.propertyTypeName}
         </h5>
