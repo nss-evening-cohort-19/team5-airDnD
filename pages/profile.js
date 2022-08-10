@@ -40,7 +40,7 @@ export default function ProfilePage() {
       <div style={{ width: '50%' }}>
         <ProfileSection displayName={user.displayName} photoURL={user.photoURL} email={user.email} lastLogin={user.lastLogin} phoneNum={user.phoneNum} />
       </div>
-      <div style={{ width: '50%' }}>
+      <div style={{ width: '40%' }}>
         {messages.map((message) => (
           <MessagesSection key={message.firebaseKey} messageObj={message} onUpdate={getProfileMessages} />
         ))}
