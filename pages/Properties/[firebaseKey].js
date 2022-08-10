@@ -2,16 +2,21 @@
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { getSingleProperties } from '../../api/userPropertyData';
+import { getSingleProperties, getPropertiesReservations } from '../../api/userPropertyData';
 
 export default function ViewProperty() {
   const [propertyDetails, setPropertyDetails] = useState({});
+  const [reservationDetails, setReservationDetails] = useState({});
   const router = useRouter();
 
   const { firebaseKey } = router.query;
 
   useEffect(() => {
     getSingleProperties(firebaseKey).then(setPropertyDetails);
+  }, [firebaseKey]);
+
+  useEffect(() => {
+    getPropertiesReservations(firebaseKey).then(setReservationDetails);
   }, [firebaseKey]);
 
   return (
@@ -34,6 +39,10 @@ export default function ViewProperty() {
         <Link href="/Profile/Reservations/new" passHref>
           <button type="button" className="btn btn-primary">Reserve Property</button>
         </Link>
+        <h5>
+          {propertyDetails.reservationObject?.checkInDate}
+          {reservationDetails.checkOutDate}
+        </h5>
 
       </div>
 

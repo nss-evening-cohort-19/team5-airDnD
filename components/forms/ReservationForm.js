@@ -9,8 +9,9 @@ import { useAuth } from '../../utils/context/authContext';
 const initialState = {
   name: '',
   userPropertyId: '',
-  date: '',
   paymentType: '',
+  checkInDate: '',
+  checkOutDate: '',
 };
 
 export default function ReservationForm({ obj }) {
