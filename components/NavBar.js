@@ -39,13 +39,10 @@ export default function NavBar() {
               <Link passHref href="/Profile/Reservations/new">
                 <a className="nav-link">Book a Reservation</a>
               </Link>
+            </li>
+            <li>
               <Link passHref href="/Profile/Messages/newMsg">
                 <a className="nav-link">New Message</a>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link passHref href="/NewUser">
-                <a className="nav-link">New User?</a>
               </Link>
             </li>
             <button type="button" className="btn btn-danger" onClick={signOut}>

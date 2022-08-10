@@ -6,7 +6,7 @@ const dbUrl = clientCredentials.databaseURL;
 // Get all User Properties
 
 const getAllMessages = (uid) => new Promise((resolve, reject) => {
-  axios.get(`${dbUrl}/messages.json.json?orderBy="uid"&equalTo="${uid}"`)
+  axios.get(`${dbUrl}/messages.json?orderBy="uid"&equalTo="${uid}"`)
     .then((response) => {
       if (response.data) {
         resolve(Object.values(response.data));
