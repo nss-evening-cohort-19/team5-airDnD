@@ -1,11 +1,13 @@
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
+import { Form, FloatingLabel, Button } from 'react-bootstrap';
 import { createReservation, updateReservation } from '../../api/reservationData';
 import { getAllProperties } from '../../api/userPropertyData';
 import { useAuth } from '../../utils/context/authContext';
 
 const initialState = {
+  name: '',
   userPropertyId: '',
   date: '',
   paymentType: '',
@@ -45,45 +47,45 @@ export default function ReservationForm({ obj }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Reservations</h2>
-      <select className="select-rental" aria-label="Choose your rental">
-        <option selected>Choose a Rental</option>
-        <option value="1">Castle</option>
-        <option value="2">Taverns</option>
-        <option value="3">Tomb</option>
-        <option value="4">Hut</option>
-      </select>
-      <div className="form-group">
-        <label htmlFor="title">Who is going?</label>
-        <input type="text" className="form-control" aria-describedby="Names" placeholder="Name" name="userPropertyId" value={formInput.userPropertyId} onChange={handleChange} required />
-      </div>
-      <option value="">How do you wish to pay?</option>
-      {properties.map((property) => (
-        <option
-          key={property.firebaseKey}
-          value={property.firebaseKey}
-          // instead of selected, can also add defaultValue
-          selected={obj.userPropertyId === property.firebaseKey}
-        >
-          {property.propetyTypeName}
-        </option>
-      ))}
-      {/* <div className="mb-3">
-        <label htmlFor="user-reserving" className="form-label">Who is going?</label>
-        <input id="user-reserving" type="text" className="form-control" onChange={handleChange} required />
-      </div> */}
-      <button type="submit" className="btn btn-success">
-        {obj.firebaseKey ? 'Update' : 'Create'} Reservation
-      </button>
-    </form>
+    <Form onSubmit={handleSubmit}>
+      <h1>Book a Reservation</h1>
+      <FloatingLabel controlId="floatingSelect" label="Rental">
+        <Form.Select aria-label="Rental" name="propertyTypeName" onChange={handleChange} className="mb-3" required>
+          <option value="">Choose a Rental</option>
+          {properties.map((property) => (
+            <option key={property.firebaseKey} value={property.propertyTypeName} selected={obj.propertyTypeName === property.firebaseKey}>
+              {property.propertyTypeName}
+            </option>
+          ))}
+        </Form.Select>
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingInput1" label="Name" className="mb-3">
+        <Form.Control type="text" placeholder="Who is going?" name="name" value={formInput.name} onChange={handleChange} required />
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingInput1" label="Check In Date" className="mb-3">
+        <Form.Control type="date" placeholder="Check In Date" name="checkInDate" value={formInput.checkInDate} onChange={handleChange} required />
+      </FloatingLabel>
+      <FloatingLabel controlId="floatingInput1" label="Check Out Date" className="mb-3">
+        <Form.Control type="date" placeholder="Check Out Date" name="checkOutDate" value={formInput.checkOutDate} onChange={handleChange} required />
+      </FloatingLabel>
+      <Form.Select aria-label="Default select example" value={formInput.paymentType}>
+        <option>How do you choose to pay?</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </Form.Select>
+      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Reservation</Button>
+    </Form>
   );
 }
 
 ReservationForm.propTypes = {
   obj: PropTypes.shape({
+    name: PropTypes.string,
+    propertyTypeName: PropTypes.string,
     userPropertyId: PropTypes.string,
-    date: PropTypes.string,
+    checkInDate: PropTypes.string,
+    checkOutDate: PropTypes.string,
     paymentType: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),

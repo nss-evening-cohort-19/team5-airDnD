@@ -1,7 +1,10 @@
 import { useRouter } from 'next/router';
 import React, { useState, useEffect } from 'react';
-import { viewPropertyDetails } from '../../../api/mergedData';
-import ReservationsSection from '../../../components/Reservations';
+// import { viewPropertyDetails } from '../../../api/mergedData';
+import { getSingleReservation } from '../../../api/reservationData';
+// import { getPropertiesReservations } from '../../../api/userPropertyData';
+// import ReservationsSection from '../../../components/Reservations';
+// import ReservationsSection from '../../../components/Reservations';
 
 export default function ViewReservation() {
   const [reservationDetails, setReservationDetails] = useState({});
@@ -9,22 +12,16 @@ export default function ViewReservation() {
   const { firebaseKey } = router.query;
 
   useEffect(() => {
-    viewPropertyDetails(firebaseKey).then(setReservationDetails);
+    getSingleReservation(firebaseKey).then(setReservationDetails);
   }, [firebaseKey]);
 
   return (
-    <div>
-      <h3>{reservationDetails.userPropertyId}</h3>
-      <div>
-        {reservationDetails.reservations?.map((reservation) => (
-          <ReservationsSection
-            key={reservation.firebaseKey}
-            reservationObj={reservation}
-            onUpdate={() => {
-              viewPropertyDetails(firebaseKey).then(setReservationDetails);
-            }}
-          />
-        ))}
+    <div className="mt-5 d-flex flex-wrap">
+      <div className="text-white ms-5 details">
+        <h5>
+          {reservationDetails.propertyTypeName}
+        </h5>
+        <p>Who is going: {reservationDetails.name}</p>
       </div>
     </div>
   );

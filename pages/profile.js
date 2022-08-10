@@ -18,6 +18,7 @@ export default function ProfilePage() {
   };
   useEffect(() => {
     getAllReservations();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [user]);
   // const getProfileMessages = () => {
   //   getMessages(user.uid).then(setMessages);
