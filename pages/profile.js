@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { getAllMessages } from '../api/messageData';
 import MessagesSection from '../components/Messages';
+import ProfileSection from '../components/UserProfile';
 // import ReservationsSection from '../components/Reservations';
 import { useAuth } from '../utils/context/authContext';
 
@@ -26,8 +27,8 @@ export default function ProfilePage() {
           </Link>
         </div>
       </nav>
-      <div>
-        <ProfilePage displayName={user.displayName} photoURL={user.photoURL} email={user.email} lastLogin={user.lastLogin} phoneNum={user.phoneNum} />
+      <div style={{ width: '50%' }}>
+        <ProfileSection displayName={user.displayName} photoURL={user.photoURL} email={user.email} lastLogin={user.lastLogin} phoneNum={user.phoneNum} />
       </div>
       <div style={{ width: '50%' }}>
         {messages.map((message) => (
