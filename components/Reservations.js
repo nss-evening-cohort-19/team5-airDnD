@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
+import { Button } from 'react-bootstrap';
 import { deleteReservation } from '../api/reservationData';
 
 export default function ReservationsSection({ reservationObj, onUpdate }) {
@@ -30,6 +31,9 @@ export default function ReservationsSection({ reservationObj, onUpdate }) {
         <button type="button" onClick={deleteThisReservation}>DELETE</button>
         <Link href={`/Profile/Reservations/${reservationObj.firebaseKey}`} passHref>
           <button type="button">VIEW</button>
+        </Link>
+        <Link href={`/Profile/Reservations/edit/${reservationObj.firebaseKey}`} passHref>
+          <Button variant="info">EDIT</Button>
         </Link>
       </div>
     </div>

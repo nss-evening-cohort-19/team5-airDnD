@@ -8,6 +8,7 @@ import { useAuth } from '../../utils/context/authContext';
 
 const initialState = {
   name: '',
+  propertyTypeName: '',
   userPropertyId: '',
   date: '',
   paymentType: '',
@@ -68,7 +69,8 @@ export default function ReservationForm({ obj }) {
       <FloatingLabel controlId="floatingInput1" label="Check Out Date" className="mb-3">
         <Form.Control type="date" placeholder="Check Out Date" name="checkOutDate" value={formInput.checkOutDate} onChange={handleChange} required />
       </FloatingLabel>
-      <Form.Select aria-label="Default select example" value={formInput.paymentType}>
+      <Form.Select aria-label="Default select example" value={formInput.paymentType} onChange={handleChange}>
+        console.warn(formInput);
         <option>How do you choose to pay?</option>
         <option value="1">One</option>
         <option value="2">Two</option>
