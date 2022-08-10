@@ -1,16 +1,25 @@
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import { getReservations } from '../api/reservationData';
 // import { useState } from 'react';
 // import { getMessages } from '../api/messageData';
 // import MessagesSection from '../components/Messages';
-// import ReservationsSection from '../components/Reservations';
+import ReservationsSection from '../components/Reservations';
 // import ProfileSection from '../components/UserProfile';
-// import { useAuth } from '../utils/context/authContext';
+import { useAuth } from '../utils/context/authContext';
 
 export default function ProfilePage() {
   // const [messages, setMessages] = useState([]);
   // const [userProfile, setUserProgfile] = useState([]);
-  // const [reservations, setReservations] = useState([]);
-  // const { user } = useAuth();
+  const [reservations, setReservations] = useState([]);
+  const { user } = useAuth();
+  const getAllReservations = () => {
+    getReservations(user.uid).then(setReservations);
+  };
+  useEffect(() => {
+    getAllReservations();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
   // const getProfileMessages = () => {
   //   getMessages(user.uid).then(setMessages);
   // };
@@ -33,6 +42,9 @@ export default function ProfilePage() {
         <MessagesSection />
       </div>
       <div><ReservationsSection /></div> */}
+      {reservations.map((reservation) => (
+        <ReservationsSection key={reservation.firebaseKey} reservationObj={reservation} onUpdate={getAllReservations} />
+      ))}
     </>
   );
 }
