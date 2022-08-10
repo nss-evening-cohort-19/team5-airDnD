@@ -1,30 +1,36 @@
-import Image from 'next/image';
 import PropTypes from 'prop-types';
+import Card from 'react-bootstrap/Card';
+import Dragon from '../public/images/dragon.png';
 
-export default function ProfileSection({ userObj }) {
+export default function ProfileSection({
+  displayName, email, phoneNum, photoURL,
+}) {
   return (
-    <>
-      <div className="card" style={{ width: '18rem' }}>
-        <Image src="..." className="card-img-top" alt="..." />
-        <div className="card-body">
-          <h1 className="card-title">{userObj.name}</h1>
-          <h5 className="card-text">{userObj.email}</h5>
-          <h5 className="card-text">{userObj.phoneNum}</h5>
-        </div>
-        <div className="card-body">
-          <h3>Edit Profile</h3>
-          <h3>Deactivate Account</h3>
-        </div>
-      </div>
-    </>
+    <Card className="text-center" style={{ width: '25rem', height: '40rem' }}>
+      <Card.Header />
+      <Card.Body>
+        <Card.Img src={photoURL} alt={displayName} style={{ borderRadius: '70%', width: '70%' }} />
+        <Card.Body style={{ marginTop: '7rem' }}>
+          <Card.Title>{displayName}</Card.Title>
+          <Card.Text>{email}</Card.Text>
+          <Card.Text>{phoneNum}</Card.Text>
+        </Card.Body>
+      </Card.Body>
+      <Card.Footer className="text-muted">Last Login: {Date().toLocaleString()}</Card.Footer>
+    </Card>
   );
 }
 
 ProfileSection.propTypes = {
-  userObj: PropTypes.shape({
-    firebaseKey: PropTypes.string,
-    email: PropTypes.string,
-    name: PropTypes.string,
-    phoneNum: PropTypes.string,
-  }).isRequired,
+  email: PropTypes.string,
+  displayName: PropTypes.string,
+  phoneNum: PropTypes.string,
+  photoURL: PropTypes.string,
+};
+
+ProfileSection.defaultProps = {
+  displayName: null,
+  photoURL: Dragon,
+  email: null,
+  phoneNum: null,
 };
