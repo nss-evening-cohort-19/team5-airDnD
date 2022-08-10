@@ -10,10 +10,11 @@ function Signin() {
         padding: '30px',
         maxWidth: '400px',
         margin: '0 auto',
+        Fontfamily: 'fantasy',
       }}
     >
-      <h1>Hi there!</h1>
-      <p>Click the button below to login!</p>
+      <h1>AirDnD</h1>
+      <p>Click the button below for vacation of a Lifetime!</p>
       <button type="button" className="btn btn-primary btn-lg copy-btn" onClick={signIn}>
         Sign In
       </button>
