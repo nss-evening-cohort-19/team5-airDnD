@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
@@ -6,7 +7,7 @@ import { getSingleProperties, getPropertiesReservations } from '../../api/userPr
 
 export default function ViewProperty() {
   const [propertyDetails, setPropertyDetails] = useState({});
-  const [reservationDetails, setReservationDetails] = useState({});
+  const [reservationDetails, setReservationDetails] = useState('');
   const router = useRouter();
 
   const { firebaseKey } = router.query;
@@ -16,7 +17,14 @@ export default function ViewProperty() {
   }, [firebaseKey]);
 
   useEffect(() => {
-    getPropertiesReservations(firebaseKey).then(setReservationDetails);
+    getPropertiesReservations(firebaseKey).then((reservationsArray) => {
+      let reservationString = '';
+
+      reservationsArray.forEach((reservation) => {
+        reservationString += `From: ${reservation?.checkInDate} To: ${reservation?.checkOutDate}, `;
+      });
+      setReservationDetails(reservationString);
+    });
   }, [firebaseKey]);
 
   return (
@@ -36,14 +44,13 @@ export default function ViewProperty() {
         <p><strong>{propertyDetails.propertyType}</strong></p>
         <p>{propertyDetails.location}</p>
         <p><i>{propertyDetails.description}</i></p>
+        <div style={{ margin: '10px 0px' }}>
+          <b>Existing reservations: </b>
+          {reservationDetails}
+        </div>
         <Link href="/Profile/Reservations/new" passHref>
           <button type="button" className="btn btn-primary">Reserve Property</button>
         </Link>
-        <h5>
-          {propertyDetails.reservationObject?.checkInDate}
-          {reservationDetails.checkOutDate}
-        </h5>
-
       </div>
 
     </div>
