@@ -9,6 +9,8 @@ const initialState = {
   msgTitle: '',
   message: '',
   firebaseKey: '',
+  to: '',
+  from: '',
 };
 
 export default function MessageForm({ obj }) {
@@ -37,7 +39,7 @@ export default function MessageForm({ obj }) {
     if (obj.firebaseKey) {
       updateMessage(formInput).then(() => router.push('/profile'));
     } else {
-      const payload = { ...formInput };
+      const payload = { ...formInput, uid: user.uid };
       //     // uid: user.uid
       createMessage(payload).then(() => {
         router.push('/profile');
@@ -73,6 +75,32 @@ export default function MessageForm({ obj }) {
             required
             style={{ height: '100px' }}
           />
+          <label htmlFor="floatingInput">To:</label>
+        </div>
+        <div className="form-floating">
+          <textarea
+            className="form-control"
+            placeholder="Who is this for?"
+            id="floatingTextarea2"
+            name="to"
+            value={formInput.to}
+            onChange={handleChange}
+            required
+            style={{ height: '100px' }}
+          />
+          <label htmlFor="floatingInput">From:</label>
+        </div>
+        <div className="form-floating">
+          <textarea
+            className="form-control"
+            placeholder="Who sent this?"
+            id="floatingTextarea2"
+            name="from"
+            value={formInput.from}
+            onChange={handleChange}
+            required
+            style={{ height: '100px' }}
+          />
           <label htmlFor="floatingTextarea2">Comments</label>
         </div>
         <button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Message</button>
@@ -85,6 +113,8 @@ MessageForm.propTypes = {
     msgTitle: PropTypes.string,
     firebaseKey: PropTypes.string,
     message: PropTypes.string,
+    to: PropTypes.string,
+    from: PropTypes.string,
   }),
 };
 
