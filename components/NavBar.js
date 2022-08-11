@@ -6,27 +6,32 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 import Image from 'next/image';
+import { Button } from 'react-bootstrap';
+import Link from 'next/link';
 import { signOut } from '../utils/auth';
 import { useAuth } from '../utils/context/authContext';
 import Dice from '../public/images/dice.png';
+import MessagePaper from '../public/images/messagepaper.png';
 
 export default function NavBar() {
   const { user } = useAuth();
   return (
-    <Navbar bg="light" expand="lg" style={{ marginBottom: '1.5rem' }}>
+    <Navbar bg="light" expand="lg" style={{ marginBottom: '1.5rem', marginLeft: '0px', justifyContent: 'space-evenly' }}>
       <Container>
-        <Navbar.Brand href="#home" style={{ fontSize: '2rem' }}>
+        <Navbar.Brand href="/" style={{ fontSize: '2rem', marginLeft: '20px' }}>
           AirDnD <Image src={Dice} alt="Dice" height={40} width={40} />
         </Navbar.Brand>
-        <Nav.Link href="/Profile/Reservations/new">Where|Check-in|Check-out|Who</Nav.Link>
-        <NavDropdown
-          title={(
-            <img className="thumbnail-image" src={user.photoURL} alt="Profile Pic" style={{ width: '30%', borderRadius: '50%' }} />
-          )}
-          id="basic-nav-dropdown"
-        >
-          <NavDropdown.Item href="/">View Listings</NavDropdown.Item>
+        <span>
+          <h6 style={{ textAlign: 'center' }}>Stay|Experiences</h6>
+          <Nav.Link href="/Profile/Reservations/new" style={{ fontSize: '1.2rem' }}>Where|Check-in|Check-out|Who</Nav.Link>
+        </span>
+        <Button variant="secondary">List Your Space</Button>{' '}
+        <Link href="/profile">
+          <Image src={MessagePaper} alt="Message" height={40} width={40} />
+        </Link>
+        <NavDropdown title={<img className="thumbnail-image" src={user.photoURL} alt="Profile Pic" style={{ width: '30%', borderRadius: '50%' }} />} id="basic-nav-dropdown" style={{ padding: '0px' }}>
           <NavDropdown.Item href="/profile">Account</NavDropdown.Item>
+          <NavDropdown.Item href="/">View Listings</NavDropdown.Item>
           <NavDropdown.Item href="/Profile/Reservations/new">New Reservation</NavDropdown.Item>
           <NavDropdown.Item href="/Profile/Messages/new">New Message</NavDropdown.Item>
           <NavDropdown.Divider />
