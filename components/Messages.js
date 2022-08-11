@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { deleteMessage } from '../api/messageData';
 
@@ -30,9 +31,15 @@ export default function MessagesSection({ messageObj, onUpdate }) {
               {messageObj.message}
             </div>
             <div>
-              <button type="button" href="" className="view-btn">VIEW</button>
+              {/* <button type="button" href="" className="view-btn">VIEW</button> */}
               <button type="button" href="" className="delete-btn" onClick={deleteThisMessage}>DELETE</button>
+              <Link href={`/Profile/Messages/edit/${messageObj.firebaseKey}`} passHref>
+                <button className="update-btn" type="button">
+                  Update
+                </button>
+              </Link>
             </div>
+
           </div>
         </div>
       </div>
