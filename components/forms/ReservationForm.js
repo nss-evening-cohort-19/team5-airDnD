@@ -38,7 +38,7 @@ export default function ReservationForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateReservation(formInput).then(() => router.push(`/reservations/${obj.firebaseKey}`));
+      updateReservation(formInput).then(() => router.push(`/Profile/Reservations/${obj.firebaseKey}`));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createReservation(payload).then(() => {
