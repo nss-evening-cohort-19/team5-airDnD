@@ -11,29 +11,20 @@ export default function ReservationsSection({ reservationObj, onUpdate }) {
     }
   };
   return (
-    // <>
-    //   <div className="card">
-    //     <div className="card-body">
-    //       <h3>Rental Location:{reservationObj.userPropertyId}</h3>
-    //       <p>{reservationObj.date}</p>
-    //       <div>{reservationObj.paymentType}</div>
-    //     </div>
-    //   </div>
-    // </>
     <div className="card">
-      <div className="card-header">{reservationObj.name}</div>
-      <div className="card-title">{reservationObj.propertyTypeName}</div>
+      <div className="card-header"><h4>{reservationObj.name}</h4></div>
+      <div className="card-title"><h5>{reservationObj.propertyTypeName}</h5></div>
       <div className="card-body">
-        <h5 className="card-title">Here is your reservation:</h5>
+        <h5 className="card-title">Here is your Reservation Information:</h5>
         <p className="card-text">Check-In Date: {reservationObj.checkInDate}</p>
         <p className="card-text">Check-Out Date: {reservationObj.checkOutDate}</p>
         <p className="card-text">Payment: {reservationObj.paymentType}</p>
-        <button type="button" onClick={deleteThisReservation}>DELETE</button>
+        <Button type="button" onClick={deleteThisReservation}>DELETE</Button>
         <Link href={`/Profile/Reservations/${reservationObj.firebaseKey}`} passHref>
-          <button type="button">VIEW</button>
+          <Button type="button">VIEW</Button>
         </Link>
         <Link href={`/Profile/Reservations/edit/${reservationObj.firebaseKey}`} passHref>
-          <Button variant="info">EDIT</Button>
+          <Button type="button">EDIT</Button>
         </Link>
       </div>
     </div>
@@ -47,7 +38,6 @@ ReservationsSection.propTypes = {
     checkInDate: PropTypes.string,
     checkOutDate: PropTypes.string,
     paymentType: PropTypes.string,
-    userPropertyId: PropTypes.string,
     propertyTypeName: PropTypes.string,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,

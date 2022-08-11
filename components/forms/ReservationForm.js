@@ -51,7 +51,7 @@ export default function ReservationForm({ obj }) {
     <Form onSubmit={handleSubmit}>
       <h1>Book a Reservation</h1>
       <FloatingLabel controlId="floatingSelect" label="Rental">
-        <Form.Select aria-label="Rental" name="propertyTypeName" onChange={handleChange} className="mb-3" required>
+        <Form.Select value={formInput.propertyTypeName} aria-label="Rental" name="propertyTypeName" onChange={handleChange} className="mb-3" required>
           <option value="">Choose a Rental</option>
           {properties.map((property) => (
             <option key={property.firebaseKey} value={property.propertyTypeName} selected={obj.propertyTypeName === property.firebaseKey}>
@@ -69,12 +69,11 @@ export default function ReservationForm({ obj }) {
       <FloatingLabel controlId="floatingInput1" label="Check Out Date" className="mb-3">
         <Form.Control type="date" placeholder="Check Out Date" name="checkOutDate" value={formInput.checkOutDate} onChange={handleChange} required />
       </FloatingLabel>
-      <Form.Select aria-label="Default select example" value={formInput.paymentType} onChange={handleChange}>
-        console.warn(formInput);
+      <Form.Select aria-label="Default select example" type="text" name="paymentType" value={formInput.paymentType} onChange={handleChange}>
         <option>How do you choose to pay?</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option value="Honorable Combat: Fight the owner">Honorable Combat: Fight the owner</option>
+        <option value="Pay in GOLD Coins">Pay in GOLD Coins</option>
+        <option value="Honorable Combat: Battle it out with a Dragon">Honorable Combat: Battle it out with a Dragon</option>
       </Form.Select>
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Reservation</Button>
     </Form>
