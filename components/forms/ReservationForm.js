@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import { Form, FloatingLabel, Button } from 'react-bootstrap';
 import { createReservation, updateReservation } from '../../api/reservationData';
-import { getAllProperties } from '../../api/userPropertyData';
+import { getAllProperties, getPropertiesReservations } from '../../api/userPropertyData';
 import { useAuth } from '../../utils/context/authContext';
 
 const initialState = {
@@ -18,6 +18,8 @@ export default function ReservationForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
   // eslint-disable-next-line no-unused-vars
   const [properties, setProperties] = useState([]);
+  const [selectedPropertyId, setSelectedPropertyId] = useState('');
+  const [reservationDetails, setReservationDetails] = useState('');
   const router = useRouter();
   const { user } = useAuth();
 
@@ -29,11 +31,37 @@ export default function ReservationForm({ obj }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+
     setFormInput((prevState) => ({
       ...prevState,
       [name]: value,
     }));
   };
+
+  const onPropertySelectChange = (e) => {
+    const { value } = e.target;
+    const [propertyTypeName, propertyId] = value.split('__');
+
+    setFormInput(() => ({
+      ...formInput,
+      propertyTypeName,
+    }));
+
+    setSelectedPropertyId(propertyId);
+  };
+
+  useEffect(() => {
+    if (selectedPropertyId) {
+      getPropertiesReservations(selectedPropertyId).then((reservationsArray) => {
+        let reservationString = '';
+
+        reservationsArray.forEach((reservation) => {
+          reservationString += `From: ${reservation?.checkInDate} To: ${reservation?.checkOutDate}, `;
+        });
+        setReservationDetails(reservationString);
+      });
+    }
+  }, [selectedPropertyId]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,14 +79,30 @@ export default function ReservationForm({ obj }) {
     <Form onSubmit={handleSubmit}>
       <h1>Book a Reservation</h1>
       <FloatingLabel controlId="floatingSelect" label="Rental">
-        <Form.Select value={formInput.propertyTypeName} aria-label="Rental" name="propertyTypeName" onChange={handleChange} className="mb-3" required>
-          <option value="">Choose a Rental</option>
+        <Form.Select
+          aria-label="Rental"
+          name="propertyTypeName"
+          onChange={onPropertySelectChange}
+          className="mb-3"
+          required
+        >
+          <option value="">
+            Choose a Rental
+          </option>
           {properties.map((property) => (
-            <option key={property.firebaseKey} value={property.propertyTypeName} selected={obj.propertyTypeName === property.firebaseKey}>
+            <option
+              key={property.firebaseKey}
+              value={`${property.propertyTypeName}__${property.firebaseKey}`}
+              selected={formInput.propertyTypeName === property.propertyTypeName}
+            >
               {property.propertyTypeName}
             </option>
           ))}
         </Form.Select>
+        <div style={{ margin: '10px 0px' }}>
+          <b>Existing reservations: </b>
+          {reservationDetails}
+        </div>
       </FloatingLabel>
       <FloatingLabel controlId="floatingInput1" label="Name" className="mb-3">
         <Form.Control type="text" placeholder="Who is going?" name="name" value={formInput.name} onChange={handleChange} required />
