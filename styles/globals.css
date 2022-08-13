@@ -38,9 +38,10 @@ background-image: linear-gradient(90deg, #A9C9FF 0%, #FFBBEC 100%); */
   display: flex;
   flex-direction: column;
   align-items: left;
-  background: white;
+  background: #D9D9D9;
   overflow: hidden;
   font-size: 15px;
+  border-radius: 10px;
 }
 
 .propertyCardImage {
@@ -49,7 +50,7 @@ background-image: linear-gradient(90deg, #A9C9FF 0%, #FFBBEC 100%); */
 
 .propertyCardButtonContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   margin: 10px 0px;
 }
 
@@ -75,7 +76,7 @@ background-image: linear-gradient(90deg, #A9C9FF 0%, #FFBBEC 100%); */
 
 .propertyCardTitleContainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .propertyCardTitle {
@@ -95,6 +96,8 @@ background-image: linear-gradient(90deg, #A9C9FF 0%, #FFBBEC 100%); */
 
 .filterButtons {
   margin: 20px 0px 0px 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .filterButton {

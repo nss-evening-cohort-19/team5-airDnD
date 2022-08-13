@@ -83,7 +83,7 @@ function Home() {
         <button
           key={`${typeFilter}`}
           type="button"
-          className="btn btn-outline-success filterButton"
+          className="btn btn-secondary filterButton"
           onClick={() => setPropertyFilter({ name: undefined, type: typeFilter })}
         >
           {typeFilter}

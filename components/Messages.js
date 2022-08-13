@@ -14,7 +14,7 @@ export default function MessagesSection({ messageObj, onUpdate }) {
   };
 
   return (
-    <div className="card" style={{ width: '30rem' }}>
+    <div className="card" style={{ width: '50rem' }}>
       <div className="card-body">
         <h5 className="card-title">Message: {messageObj.msgTitle}</h5>
         <h6 className="card-from mb-2 text-muted">From: {messageObj.from}</h6>
