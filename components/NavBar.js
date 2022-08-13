@@ -1,56 +1,42 @@
+/* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
+import { Button } from 'react-bootstrap';
 import Link from 'next/link';
-import Image from 'next/image';
 import { signOut } from '../utils/auth';
+import { useAuth } from '../utils/context/authContext';
 
 export default function NavBar() {
+  const { user } = useAuth();
   return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-      <div className="container-fluid">
-        <Image src="/docs/5.2/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" />
-        <Link passHref href="/">
-          <a className="navbar-brand" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01">
-            AirDnD
-          </a>
+    <Navbar bg="light" expand="lg" style={{ marginBottom: '1.5rem', marginLeft: '0px', justifyContent: 'space-evenly' }}>
+      <Container>
+        <Navbar.Brand href="/" style={{ fontSize: '2rem', marginLeft: '20px' }}>
+          AirDnD <img src="/./images/dice.png" alt="Dice" height="40px" width="40px" />
+        </Navbar.Brand>
+        <span>
+          <h6 style={{ textAlign: 'center' }}>Stay|Experiences</h6>
+          <Nav.Link href="/Profile/Reservations/new" style={{ fontSize: '1.2rem' }}>
+            Where|Check-in|Check-out|Who
+          </Nav.Link>
+        </span>
+        <Button href="/Properties/new" variant="secondary">List Your Space</Button>{' '}
+        <Link href="/profile">
+          <img src="/./images/messagepaper.png" alt="Message" height="40px" width="40px" />
         </Link>
-        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon" />
-        </button>
-
-        <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <ul className="navbar-nav me-auto">
-            <li className="nav-item">
-              <Link passHref href="/">
-                <a className="nav-link">Properties</a>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link passHref href="/Properties/new">
-                <a className="nav-link">Add Your Space</a>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link passHref href="/profile">
-                <a className="nav-link">Profile</a>
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link passHref href="/Profile/Reservations/new">
-                <a className="nav-link">Book a Reservation</a>
-              </Link>
-            </li>
-            <li>
-              <Link passHref href="/Profile/Messages/newMsg">
-                <a className="nav-link">New Message</a>
-              </Link>
-            </li>
-            <button type="button" className="btn btn-danger" onClick={signOut}>
-              Sign Out
-            </button>
-          </ul>
-        </div>
-      </div>
-    </nav>
+        <NavDropdown title={<img className="thumbnail-image" src={user.photoURL} alt="Profile Pic" style={{ width: '30%', borderRadius: '50%' }} />} id="basic-nav-dropdown" style={{ padding: '0px' }}>
+          <NavDropdown.Item href="/profile">Account</NavDropdown.Item>
+          <NavDropdown.Item href="/">View Listings</NavDropdown.Item>
+          <NavDropdown.Item href="/Profile/Reservations/new">New Reservation</NavDropdown.Item>
+          <NavDropdown.Item href="/Profile/Messages/newMsg">New Message</NavDropdown.Item>
+          <NavDropdown.Divider />
+          <NavDropdown.Item onClick={signOut}>Logout</NavDropdown.Item>
+        </NavDropdown>
+      </Container>
+    </Navbar>
   );
 }
