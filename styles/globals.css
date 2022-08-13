@@ -19,7 +19,10 @@ a {
 }
 
 body {
-  background-color: white;
+  background-image: url(/./images/wood.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
  font-family: 'Bokor', cursive;
   color: #484848;
   /* font-family: fantasy; */
