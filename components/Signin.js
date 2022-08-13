@@ -10,18 +10,28 @@ function Signin() {
       style={{
         height: '90vh',
         // padding: '30px',
-        maxWidth: '1200px',
+        maxWidth: '50%',
         margin: '0 auto',
         color: '#FF0001',
         textAlign: 'center',
+        display: 'inline-block',
       }}
     >
-      <div style={{ fontSize: '20rem' }}>AirDnD</div>
-      <p style={{ fontSize: '5rem' }}>Click the button below for vacation of a Lifetime!</p>
+      <div style={{ fontSize: '15rem' }}>AirDnD</div>
+      <p style={{ fontSize: '2.5rem' }}>Click the button below for vacation of a Lifetime!</p>
       <button type="button" className="btn btn-secondary btn-lg copy-btn" onClick={signIn}>
         Sign In
       </button>
-      <img width={500} style={{ marginLeft: '22rem' }} src="/./images/dice.png" />
+      <img
+        width={500}
+        style={{
+          position: 'relative',
+          top: '20%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+        }}
+        src="/./images/dice.png"
+      />
     </div>
   );
 }
