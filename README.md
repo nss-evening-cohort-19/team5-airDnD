@@ -1,78 +1,55 @@
-# React/Next.js Template
+# AirDnD
 
-[See Live Demo of this Template](https://drt-next-js-template.netlify.app/)
+AirDnD is a fantasy marketplace for rentals and experiences. Authenticated users are able to host and reserve mystical rental properties and experiences. 
 
-## Topics
-- [Get Started](#get-started)
-- [Starting the Project](#starting-the-project)
-- [Using axios](#using-axios)
-- [Deploying on Netlify](#deploying-on-netlify)
-___
-## Getting Started
-### Use Template
-#### 1. To get started, click the GREEN "Use this Template" button at the top of the repo
-<img width="915" alt="Screen Shot 2022-07-06 at 12 54 01 PM" src="https://user-images.githubusercontent.com/29741570/177612998-4aac9237-5a1e-4f13-8ae0-468587521564.png">
+# Getting Started
 
-#### 2. Make sure YOUR github account is selected in the dropdown and name your project
-<img width="763" alt="Screen Shot 2022-07-06 at 12 54 48 PM" src="https://user-images.githubusercontent.com/29741570/177613126-dd38f678-7553-4f27-8a4a-75680f14d71e.png">
+- Click on the Sign in button to Sign in using google account.
+- On the loading page, you can see the existing properties
+- To view individual properties, click on view button on properties card.
+- To edit properties, click on edit button and change the prepopulated form to your preference.
+- To delete a property, press the delete button, click ok on the pop up to delete, or cancel to not delete.
+- To create a new property, click on list your space button, fill in the form and click create your property button.
+- To search a property, enter the property name and click search.
+- Property filter enables, searching through property types based on button click.
+- To create a reservation, click on stay/experiences button on nav bar. You can also create a reservation by clicking on reserve property button in properties view.
 
-#### 3. Clone your new repo to your local machine
-#### 4. Go to the **NEXT** section
+## Primary Features
+- AirDnd is a single page application created with React, firebase API and the end points were checked using postman.
+- Users can login using google id.
+- Users are welcomed to the loading page with existing properties, a search bar, filter buttons and navbar.
+- Users can also navigate using navbar links. You can create a new property from list your space link on navbar.
+- Users can create a new reservation by clicking the stay/experience link on navbar.
+- Users can view, edit and delete properties, reservations and messages in addition to creating them.
+- The profile page displays the details of the users profile.
+- Users can logout of the app using the sign out button on navbar.
 
-## Starting the Project
-1. Create a Firebase project and set up authentication. Use [these videos](https://vimeo.com/showcase/codetracker-firebase) as a refresher if needed.
-1. Create a `.env` file at the root of the project
-1. Copy/Paste the contents of the `.env.sample` file to your newly created `.env` file.
-1. Copy over all of your Firebase values into the `.env` file.
-1. Open the `package.json` file and change the `name` property to the name of your application, and `author` to  your name.
-1. From your command line, be in the root directory and run `npm install` OR `npm i` for short.
-1. Next, run `npm run prepare`. This command sets up husky to track eslint errors on commit that will make your deploy fail on Netlify.
-1. To start your application, run `npm run dev`. THIS IS THE COMMAND YOU WILL USE TO RUN YOUR DEVELOPMENT SERVER FROM NOW ON.
-1. Open [http://localhost:3000](http://localhost:3000) with your browser.
+## Target Audience
 
-### If you see this, you are set to go!
-<img width="450" alt="Screen Shot 2022-07-06 at 1 07 27 PM" src="https://user-images.githubusercontent.com/29741570/177615077-9b6a75bc-0260-4d29-bb88-bd95a3140687.png">
+Users who are fans of the fantasy world of Dungeons and Dragons or anyone wishing to explore something new will find this application entertaining, as they navigate through different mystical properties and experiences. Users can take charge and list their space to others or reserve a property or experience for themselves. 
 
+## Purpose
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Purpose of this project is to take a creative approach to vacationing, allowing users to enter another world. The popular computer game is intricate and many users are deeply invested in it. Creating this application allows users to either be owners and list their space to other users or rent a property in another land, or experience something out of this world.
 
-**NOTES:** 
-- If you see the following error, you did not follow all the setup steps correctly and failed to add your Firebase creds. Go back and do that NOW.
+## Contributions
 
-<img width="1043" alt="Screen Shot 2022-07-06 at 11 18 45 AM" src="https://user-images.githubusercontent.com/29741570/177612501-c2628f18-4bbd-4de9-aae6-27ffba1172d6.png">
+Team members who contributed to this project: Shalane Proctor (https://github.com/shalane-proctor), Nishaya Maria Raj (https://github.com/nishayaraj), Jessica Morrison (https://github.com/Jess-Morrison), and Krima Patel (https://github.com/krima-patel).
 
-### Using Axios
-> For every file you will need to make an XHR request in, you will need to require Axios
-```js
-import axios from 'axios';
+## Help
 
-const examplePromise = () => {
-  axios.get('http://localhost:3001/example')
-    .then((data) => {
-      console.warn(data);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-});
-```
+Users can get help on this project by leaving a message for team members in the Discussion Section (https://github.com/nss-evening-cohort-19/team5-airDnD/discussions).
 
-### Deploying on Netlify
-Netlify will automatically detect your project and prepopulate the settings, but should something go wrong and it does not, here are the commands:
+## Wireframe
 
-- Build Command: `npm run build`
-- Publish directory: `.next`
+Link to Wireframe on Figma: https://www.figma.com/file/I7oGIyLoRva0Xn7TwB2fPg/AirDnD?node-id=0%3A1
 
-#### Additional Steps to Take on Netlify
-- Add Environmental Variables
-    - Any Enviromental variables you are using in your `.env` file should be added to Netlify. 
-        - Go to Site settings > Build & deploy > Environment > Environment variables and the keys and values there.
+## ERD
 
-- Update Firebase URL Settings
-    - In Firebase under Authentication select sign in methods, scroll to Authorized domains. Add your Netlify URL.
-        
-## Learn More about Next.js
-To learn more about Next.js, take a look at the following resources:
+Link to ERD on dbDiagram: https://dbdiagram.io/d/62e873daf31da965e85a3178
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Roadmap - Future plans for AirDnD is to add more features including:
+
+1. Authenticated users being able to chat with other users.
+2. Authenticated users will recieve notifications about rentals, experiences, and messages.
+3. Open and closed banner on properties and experiences to let users know what is available.
