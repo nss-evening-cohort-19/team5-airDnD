@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
-import React from 'react';
-import { useEffect, useState } from 'react/cjs/react.production.min';
+import React, { useState, useEffect } from 'react';
 import { getSingleReservation } from '../../../../api/reservationData';
 import ReservationForm from '../../../../components/forms/ReservationForm';
 
