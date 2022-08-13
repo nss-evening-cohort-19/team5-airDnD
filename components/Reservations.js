@@ -11,7 +11,7 @@ export default function ReservationsSection({ reservationObj, onUpdate }) {
     }
   };
   return (
-    <div className="card">
+    <div className="card" style={{ width: '74.2rem' }}>
       <div className="card-header"><h4>{reservationObj.name}</h4></div>
       <div className="card-title"><h5>{reservationObj.propertyTypeName}</h5></div>
       <div className="card-body">

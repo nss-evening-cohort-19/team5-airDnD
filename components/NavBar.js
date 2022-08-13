@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/link-passhref */
 /* eslint-disable @next/next/no-img-element */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
@@ -13,9 +14,17 @@ import { useAuth } from '../utils/context/authContext';
 export default function NavBar() {
   const { user } = useAuth();
   return (
-    <Navbar bg="light" expand="lg" style={{ marginBottom: '1.5rem', marginLeft: '0px', justifyContent: 'space-evenly' }}>
+    <Navbar
+      expand="lg"
+      style={{
+        marginBottom: '1.5rem',
+        marginLeft: '0px',
+        justifyContent: 'space-evenly',
+        background: '#D9D9D9',
+      }}
+    >
       <Container>
-        <Navbar.Brand href="/" style={{ fontSize: '2rem', marginLeft: '20px' }}>
+        <Navbar.Brand href="/" style={{ fontSize: '2rem', marginLeft: '20px', color: '#FF0001' }}>
           AirDnD <img src="/./images/dice.png" alt="Dice" height="40px" width="40px" />
         </Navbar.Brand>
         <span>
@@ -24,7 +33,9 @@ export default function NavBar() {
             Where|Check-in|Check-out|Who
           </Nav.Link>
         </span>
-        <Button href="/Properties/new" variant="secondary">List Your Space</Button>{' '}
+        <Button href="/Properties/new" variant="secondary">
+          List Your Space
+        </Button>{' '}
         <Link href="/profile">
           <img src="/./images/messagepaper.png" alt="Message" height="40px" width="40px" />
         </Link>
