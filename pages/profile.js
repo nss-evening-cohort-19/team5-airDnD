@@ -6,6 +6,7 @@ import ProfileSection from '../components/UserProfile';
 import { getReservations } from '../api/reservationData';
 import ReservationsSection from '../components/Reservations';
 import { useAuth } from '../utils/context/authContext';
+// import MessageCard from '../components/MessageCard';
 
 export default function ProfilePage() {
   const [messages, setMessages] = useState([]);

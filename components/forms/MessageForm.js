@@ -51,6 +51,7 @@ export default function MessageForm({ obj }) {
     <>
       <form onSubmit={handleSubmit} style={{ color: 'black' }}>
         <h2 className="text-black mt-5" style={{ color: 'black' }}>{obj.firebaseKey ? 'Update' : 'Create'} Your Message</h2>
+        <label htmlFor="floatingInput">Message Title:</label>
         <div className="form-floating mb-3">
           <input
             type="title"
@@ -62,9 +63,9 @@ export default function MessageForm({ obj }) {
             onChange={handleChange}
             required
           />
-          <label htmlFor="floatingInput">Title</label>
         </div>
-        <div className="form-floating">
+        {/* <div className="form-floating">
+          <label htmlFor="floatingInput">Title</label>
           <textarea
             className="form-control"
             placeholder="Leave a comment here"
@@ -75,9 +76,9 @@ export default function MessageForm({ obj }) {
             required
             style={{ height: '100px' }}
           />
-          <label htmlFor="floatingInput">To:</label>
-        </div>
-        <div className="form-floating">
+        </div> */}
+        <label htmlFor="floatingInput">To:</label>
+        <div className="form-floating mb-4">
           <textarea
             className="form-control"
             placeholder="Who is this for?"
@@ -88,9 +89,9 @@ export default function MessageForm({ obj }) {
             required
             style={{ height: '100px' }}
           />
-          <label htmlFor="floatingInput">From:</label>
         </div>
-        <div className="form-floating">
+        <label htmlFor="floatingInput">From:</label>
+        <div className="form-floating mb-4">
           <textarea
             className="form-control"
             placeholder="Who sent this?"
@@ -101,7 +102,19 @@ export default function MessageForm({ obj }) {
             required
             style={{ height: '100px' }}
           />
-          <label htmlFor="floatingTextarea2">Comments</label>
+        </div>
+        <label htmlFor="floatingInput">Message:</label>
+        <div className="form-floating mb-3">
+          <textarea
+            className="form-control"
+            placeholder="Spit it out"
+            id="floatingTextarea2"
+            name="message"
+            value={formInput.message}
+            onChange={handleChange}
+            required
+            style={{ height: '100px' }}
+          />
         </div>
         <button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Message</button>
       </form>
