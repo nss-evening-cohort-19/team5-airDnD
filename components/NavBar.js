@@ -16,7 +16,7 @@ export default function NavBar() {
     <Navbar bg="light" expand="lg" style={{ marginBottom: '1.5rem', marginLeft: '0px', justifyContent: 'space-evenly' }}>
       <Container>
         <Navbar.Brand href="/" style={{ fontSize: '2rem', marginLeft: '20px' }}>
-          AirDnD <img src="./images/dice.png" alt="Dice" height="40px" width="40px" />
+          AirDnD <img src="/./images/dice.png" alt="Dice" height="40px" width="40px" />
         </Navbar.Brand>
         <span>
           <h6 style={{ textAlign: 'center' }}>Stay|Experiences</h6>
@@ -24,15 +24,15 @@ export default function NavBar() {
             Where|Check-in|Check-out|Who
           </Nav.Link>
         </span>
-        <Button variant="secondary">List Your Space</Button>{' '}
+        <Button href="/Properties/new" variant="secondary">List Your Space</Button>{' '}
         <Link href="/profile">
-          <img src="./images/messagepaper.png" alt="Message" height="40px" width="40px" />
+          <img src="/./images/messagepaper.png" alt="Message" height="40px" width="40px" />
         </Link>
         <NavDropdown title={<img className="thumbnail-image" src={user.photoURL} alt="Profile Pic" style={{ width: '30%', borderRadius: '50%' }} />} id="basic-nav-dropdown" style={{ padding: '0px' }}>
           <NavDropdown.Item href="/profile">Account</NavDropdown.Item>
           <NavDropdown.Item href="/">View Listings</NavDropdown.Item>
           <NavDropdown.Item href="/Profile/Reservations/new">New Reservation</NavDropdown.Item>
-          <NavDropdown.Item href="/Profile/Messages/new">New Message</NavDropdown.Item>
+          <NavDropdown.Item href="/Profile/Messages/newMsg">New Message</NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item onClick={signOut}>Logout</NavDropdown.Item>
         </NavDropdown>
