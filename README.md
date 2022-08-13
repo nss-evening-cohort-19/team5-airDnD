@@ -1,6 +1,14 @@
 # AirDnD
 
-AirDnD is a fantasy marketplace for rentals and experiences. Authenticated users are able to host and reserve mystical rental properties and experiences. 
+AirDnD is a fantasy marketplace for rentals and experiences. Authenticated users are able to host and reserve mystical rental properties and experiences.
+
+## Target Audience
+
+Users who are fans of the fantasy world of Dungeons and Dragons or anyone wishing to explore something new will find this application entertaining, as they navigate through different mystical properties and experiences. Users can take charge and list their space to others or reserve a property or experience for themselves. 
+
+## Purpose
+
+Purpose of this project is to take a creative approach to vacationing, allowing users to enter another world. The popular computer game is intricate and many users are deeply invested in it. Creating this application allows users to either be owners and list their space to other users or rent a property in another land, or experience something out of this world.
 
 # Getting Started
 
@@ -13,6 +21,8 @@ AirDnD is a fantasy marketplace for rentals and experiences. Authenticated users
 - To search a property, enter the property name and click search.
 - Property filter enables, searching through property types based on button click.
 - To create a reservation, click on stay/experiences button on nav bar. You can also create a reservation by clicking on reserve property button in properties view.
+- To create a message, click on New Message button on the nav bar.
+- On the profile/account page, users are able to see username, email, and last login time. There is a section where you are able to see messages that users created, as well as the reservations that were created. 
 
 ## Primary Features
 - AirDnd is a single page application created with React, firebase API and the end points were checked using postman.
@@ -23,14 +33,6 @@ AirDnD is a fantasy marketplace for rentals and experiences. Authenticated users
 - Users can view, edit and delete properties, reservations and messages in addition to creating them.
 - The profile page displays the details of the users profile.
 - Users can logout of the app using the sign out button on navbar.
-
-## Target Audience
-
-Users who are fans of the fantasy world of Dungeons and Dragons or anyone wishing to explore something new will find this application entertaining, as they navigate through different mystical properties and experiences. Users can take charge and list their space to others or reserve a property or experience for themselves. 
-
-## Purpose
-
-Purpose of this project is to take a creative approach to vacationing, allowing users to enter another world. The popular computer game is intricate and many users are deeply invested in it. Creating this application allows users to either be owners and list their space to other users or rent a property in another land, or experience something out of this world.
 
 ## Contributions
 
